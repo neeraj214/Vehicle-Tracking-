@@ -49,7 +49,7 @@ class UATRACDataset(Dataset):
         img = Image.open(s['img_path']).convert('RGB') 
         return self.transform(img), s['boxes'], s['track_ids'] 
   
- if __name__ == "__main__": 
+if __name__ == "__main__": 
     # Quick test — update paths before running 
     dataset = UATRACDataset( 
         img_dir="data/UA-DETRAC/images", 
