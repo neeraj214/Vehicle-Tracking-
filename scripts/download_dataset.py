@@ -12,7 +12,7 @@ from tqdm import tqdm
 # CONFIG — update YOUR_ROBOFLOW_API_KEY below
 # Get free API key at: https://app.roboflow.com
 # ─────────────────────────────────────────────
-ROBOFLOW_API_KEY   = "YOUR_ROBOFLOW_API_KEY"
+ROBOFLOW_API_KEY   = "7UZMTA5tZK9XCyTUe53L"
 WORKSPACE          = "vehicle-detection-loakn"
 PROJECT            = "ua-detrac-10k-sample"
 VERSION            = 1
