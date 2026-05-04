@@ -37,8 +37,8 @@ BACKBONE_CONFIG = {
     "image_size": (800, 800), 
   
     # Dataset paths (update before training) 
-    "ua_detrac_img_dir": "data/UA-DETRAC/images", 
-    "ua_detrac_ann_dir": "data/UA-DETRAC/annotations", 
+    "ua_detrac_img_dir": "data/UA-DETRAC/images",
+    "ua_detrac_ann_dir": "data/UA-DETRAC/annotations",
   
     # Output paths 
     "reid_weights_path": "backend/model/weights/reid_head.pth", 
