@@ -125,14 +125,14 @@ def monitor(interval=1.0):
 
                 # Warnings
                 if temp >= 85:
-                    print(f"│  ⚠️  HIGH TEMP — check laptop cooling!"
+                    print(f"│  [WARN]  HIGH TEMP — check laptop cooling!"
                           f"{'':>15}│")
                 if mem_used / mem_total > 0.95:
-                    print(f"│  ⚠️  VRAM NEAR FULL — reduce batch size!"
+                    print(f"│  [WARN]  VRAM NEAR FULL — reduce batch size!"
                           f"{'':>13}│")
 
             else:
-                print(f"│  ❌ nvidia-smi not available"
+                print(f"│  [ERROR] nvidia-smi not available"
                       f"{'':>24}│")
 
             # PyTorch memory

@@ -70,7 +70,7 @@ def verify_structure():
 
         # Parse XML
         n_boxes = 0
-        status  = "✅"
+        status  = "[OK]"
         if os.path.exists(xml_path):
             try:
                 tree = ET.parse(xml_path)
@@ -79,10 +79,10 @@ def verify_structure():
                     for _ in frame.findall(".//target"):
                         n_boxes += 1
             except Exception as ex:
-                status = f"❌ XML error: {ex}"
+                status = f"[ERROR] XML error: {ex}"
                 errors.append(f"{seq}: {ex}")
         else:
-            status = "⚠️ No XML"
+            status = "[WARN] No XML"
             warnings.append(f"{seq}: missing XML")
 
         # Check first image readable
@@ -94,7 +94,7 @@ def verify_structure():
                 _ = img.size
             except Exception:
                 bad_images += 1
-                status = "❌ Bad image"
+                status = "[ERROR] Bad image"
 
         total_frames += n_frames
         total_boxes  += n_boxes
@@ -118,15 +118,15 @@ def verify_structure():
     if warnings:
         print(f"\nWARNINGS:")
         for w in warnings:
-            print(f"  ⚠️  {w}")
+            print(f"  [WARN]  {w}")
 
     if errors:
         print(f"\nERRORS:")
         for e in errors:
-            print(f"  ❌ {e}")
+            print(f"  [ERROR] {e}")
         return False
 
-    print(f"\n✅ Dataset is ready for training!")
+    print(f"\n[OK] Dataset is ready for training!")
     return True
 
 
@@ -145,7 +145,7 @@ def test_dataset_loader():
         print(f"  Dataset size: {len(ds)} samples")
 
         if len(ds) == 0:
-            print("  ❌ Dataset is empty — check paths")
+            print("  [ERROR] Dataset is empty — check paths")
             return False
 
         # Load first sample
@@ -161,15 +161,15 @@ def test_dataset_loader():
                 img2, b2, i2 = ds[i]
                 assert img2.shape[0] == 3, "Image must be 3-channel"
 
-        print(f"\n  ✅ DataLoader working correctly!")
+        print(f"\n  [OK] DataLoader working correctly!")
         return True
 
     except ImportError as e:
-        print(f"  ⚠️  Could not import dataset.py: {e}")
+        print(f"  [WARN]  Could not import dataset.py: {e}")
         print(f"      Run from project root directory")
         return False
     except Exception as e:
-        print(f"  ❌ DataLoader error: {e}")
+        print(f"  [ERROR] DataLoader error: {e}")
         return False
 
 
@@ -178,5 +178,5 @@ if __name__ == "__main__":
     if ok:
         test_dataset_loader()
     else:
-        print("\n❌ Fix errors above before training.")
+        print("\n[ERROR] Fix errors above before training.")
         sys.exit(1)

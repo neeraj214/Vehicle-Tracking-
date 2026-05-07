@@ -225,7 +225,7 @@ def organize_dataset():
 
             total_imgs += len(chunk)
             total_seqs += 1
-            print(f"  ✅ {seq_name}: {len(chunk)} frames → {xml_path}")
+            print(f"  [OK] {seq_name}: {len(chunk)} frames → {xml_path}")
 
     print(f"\n{'='*50}")
     print(f"DATASET SETUP COMPLETE")

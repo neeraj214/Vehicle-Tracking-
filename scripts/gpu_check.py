@@ -24,7 +24,7 @@ def check_gpu():
     print_section("GPU DETECTION")
 
     if not torch.cuda.is_available():
-        print("  ❌ CUDA NOT available")
+        print("  [ERROR] CUDA NOT available")
         print("\n  Fix options:")
         print("  1. Install CUDA-enabled PyTorch:")
         print("     pip install torch torchvision --index-url \\")
@@ -36,7 +36,7 @@ def check_gpu():
         return False
 
     n = torch.cuda.device_count()
-    print(f"  ✅ CUDA available")
+    print(f"  [OK] CUDA available")
     print(f"  GPU count     : {n}")
 
     for i in range(n):
@@ -157,14 +157,14 @@ def check_mixed_precision():
         with autocast():
             out = model(x)
 
-        print(f"  ✅ Mixed precision (FP16) supported")
+        print(f"  [OK] Mixed precision (FP16) supported")
         print(f"  autocast dtype : {out.dtype}")
         print(f"  GradScaler     : ready")
         print(f"\n  Benefit: ~50% VRAM reduction on RTX 2050")
         print(f"  Enable by passing: use_amp=True to train.py")
 
     except Exception as e:
-        print(f"  ⚠️ Mixed precision error: {e}")
+        print(f"  [WARN] Mixed precision error: {e}")
 
 
 def check_nvidia_smi():
@@ -187,14 +187,14 @@ def check_nvidia_smi():
                 for h, v in zip(headers, vals):
                     print(f"  {h:<15}: {v}")
         else:
-            print("  ⚠️ nvidia-smi not found or failed")
+            print("  [WARN] nvidia-smi not found or failed")
             print("     Install NVIDIA drivers from:")
             print("     https://www.nvidia.com/Download/index.aspx")
     except FileNotFoundError:
-        print("  ❌ nvidia-smi not found")
+        print("  [ERROR] nvidia-smi not found")
         print("     Make sure NVIDIA drivers are installed")
     except Exception as e:
-        print(f"  ❌ Error: {e}")
+        print(f"  [ERROR] Error: {e}")
 
 
 def print_training_recommendations():
@@ -252,9 +252,9 @@ if __name__ == "__main__":
     print_training_recommendations()
     print(f"\n{'='*55}")
     if gpu_ok:
-        print("  ✅ GPU is ready for training!")
+        print("  [OK] GPU is ready for training!")
         print("  Next: python scripts/download_dataset.py")
     else:
-        print("  ❌ Fix GPU issues above before training")
+        print("  [ERROR] Fix GPU issues above before training")
         print("  Alternative: Use Google Colab (free GPU)")
     print(f"{'='*55}\n")
