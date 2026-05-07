@@ -3,6 +3,9 @@ import sys
 import xml.etree.ElementTree as ET
 from PIL import Image
 from pathlib import Path
+from dataset import UATRACDataset
+import torch
+
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
@@ -138,9 +141,7 @@ def test_dataset_loader():
 
     try:
         sys.path.append("training")
-        from dataset import UATRACDataset
-        import torch
-
+        
         ds = UATRACDataset(IMG_DIR, ANN_DIR)
         print(f"  Dataset size: {len(ds)} samples")
 
