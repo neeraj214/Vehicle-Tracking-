@@ -46,7 +46,6 @@ def check_gpu():
         print(f"    Total VRAM   : {mem_gb} GB")
         print(f"    CUDA cores   : {props.multi_processor_count * 128}")
         print(f"    Compute cap  : {props.major}.{props.minor}")
-        print(f"    Clock speed  : {props.clock_rate / 1000:.0f} MHz")
 
     return True
 
@@ -242,7 +241,7 @@ def print_training_recommendations():
 
 
 if __name__ == "__main__":
-    print("\n🔍 GPU DIAGNOSTIC TOOL — Vehicle Tracker Project")
+    print("\n=== GPU DIAGNOSTIC TOOL - Vehicle Tracker Project ===")
     check_system()
     gpu_ok = check_gpu()
     check_nvidia_smi()
