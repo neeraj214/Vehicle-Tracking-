@@ -1,13 +1,11 @@
 import os
 import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import xml.etree.ElementTree as ET
 from PIL import Image
 from pathlib import Path
-from dataset import UATRACDataset
+from training.dataset import UATRACDataset
 import torch
-
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 DATA_ROOT = "data/UA-DETRAC"
 IMG_DIR   = os.path.join(DATA_ROOT, "images")
